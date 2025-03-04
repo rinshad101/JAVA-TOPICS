@@ -35,7 +35,7 @@ public class Main {
         }
     }
 
-    // ✅ Writing Notes to File
+    //  Writing Notes to File
     private static void writeNote(Scanner scanner) {
         System.out.print("Enter your note: ");
         String note = scanner.nextLine();
@@ -50,7 +50,7 @@ public class Main {
         }
     }
 
-    // ✅ Reading Notes from File
+    //  Reading Notes from File
     private static void readNotes() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
