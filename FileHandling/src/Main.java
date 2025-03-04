@@ -1,9 +1,7 @@
 import java.io.*;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.logging.SimpleFormatter;
 
 public class Main {
     private static final String FILE_NAME = "notes.txt";
@@ -12,8 +10,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
+        boolean numm = true;
 
-        while (true) {
+        while (numm) {
             System.out.println("\n Welcome to Note-Taking App");
             System.out.println("1. Write a note");
             System.out.println("2. Read all notes");
@@ -37,6 +36,7 @@ public class Main {
                 case 4:
                     System.out.println(" Exiting... Goodbye!");
                     scanner.close();
+                    numm = false;
                     return;
                 default:
                     System.out.println(" Invalid option. Try again.");
@@ -79,7 +79,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-
+    // deleting all note
     private static void deleteNote(){
         File file = new File(FILE_NAME);
         if (file.exists()){
