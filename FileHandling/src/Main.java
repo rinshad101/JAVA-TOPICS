@@ -1,8 +1,13 @@
 import java.io.*;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.SimpleFormatter;
 
 public class Main {
     private static final String FILE_NAME = "notes.txt";
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -12,7 +17,8 @@ public class Main {
             System.out.println("\n Welcome to Note-Taking App");
             System.out.println("1. Write a note");
             System.out.println("2. Read all notes");
-            System.out.println("3. Exit");
+            System.out.println("3. Delete notes");
+            System.out.println("4. Exit");
             System.out.print("Choose an option: ");
 
             choice = scanner.nextInt();
@@ -26,6 +32,9 @@ public class Main {
                     readNotes();
                     break;
                 case 3:
+                    deleteNote();
+                    break;
+                case 4:
                     System.out.println(" Exiting... Goodbye!");
                     scanner.close();
                     return;
@@ -39,11 +48,12 @@ public class Main {
     private static void writeNote(Scanner scanner) {
         System.out.print("Enter your note: ");
         String note = scanner.nextLine();
+        String timestamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            writer.write("- " + note);
+            writer.write("["+ timestamp +"]  -" + note);
             writer.newLine();
-            System.out.println("✅ Note saved successfully.");
+            System.out.println(" Note saved successfully.");
         } catch (IOException e) {
             System.out.println(" Error writing to file.");
             e.printStackTrace();
@@ -67,6 +77,19 @@ public class Main {
         } catch (IOException e) {
             System.out.println(" Error reading the file.");
             e.printStackTrace();
+        }
+    }
+
+    private static void deleteNote(){
+        File file = new File(FILE_NAME);
+        if (file.exists()){
+            if (file.delete()){
+                System.out.println("notes  deleted successfully");
+            } else {
+                System.out.println("can't delete note");
+            }
+        } else {
+            System.out.println("cannot find note....");
         }
     }
 }
