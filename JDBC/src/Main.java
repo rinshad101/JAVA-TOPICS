@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/testdb";
         String user = "root";
-        String password = "rinshad3657";
+        String password = "*******";
 
         try {
             Connection con = DriverManager.getConnection(url, user, password);
@@ -15,7 +15,5 @@ public class Main {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 }
