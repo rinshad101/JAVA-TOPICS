@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/testdb";
-        String user = "Rinshad";
+        String user = "root";
         String password = "rinshad3657";
 
         try {
