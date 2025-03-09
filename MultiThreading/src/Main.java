@@ -1,6 +1,14 @@
+// Creating a Thread Using the Thread Class
 class MyTread extends Thread{
     public void run(){
-        System.out.println("this is a tread....");
+        for (int i=1; i<10;i++){
+            System.out.println("thread -- " + i);
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e){
+                System.out.println("thread interupted..");
+            }
+        }
     }
 }
 
